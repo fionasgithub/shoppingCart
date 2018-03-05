@@ -12,7 +12,7 @@ Vue.component('productCard', {
                         </ul>
                     </div>
                     <div class="card-action">
-                        <a class="waves-effect waves-light btn"><i class="large material-icons">add_shopping_cart</i>加入購物車</a>
+                        <a class="waves-effect waves-light btn">加入購物車</a>
                     </div>
                 </div>`,
     props: [
