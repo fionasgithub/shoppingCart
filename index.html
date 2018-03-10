@@ -20,79 +20,76 @@
 </head>
 
 <body>
-    <nav>
-        <div class="nav-wrapper">
-            <a href="#" class="brand-logo">ShoppingCart</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li>
-                    <a href="#">
-                        <i class="large material-icons">shopping_cart</i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-    <div class="row" id="cart">
-        <div class="col s4 offset-s8">
-            <ul class="collection">
-                <li class="collection-item avatar">
-                    <img src="https://source.unsplash.com/sHG1dCUXgPY/20X20" alt="" class="circle">
-                    <span class="title">季節鮮果沙拉盅</span>
-                    <p>沙拉
-                        <br> 110
-                    </p>
-                    <a href="#!" class="secondary-content">
-                        <i class="material-icons">delete</i>
-                    </a>
-                </li>
-                <li class="collection-item avatar">
-                    <img src="https://source.unsplash.com/sHG1dCUXgPY/20X20" alt="" class="circle">
-                    <span class="title">醬燒杏鮑菇</span>
-                    <p>前菜
-                        <br> 120
-                    </p>
-                    <a href="#!" class="secondary-content">
-                        <i class="material-icons">delete</i>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <div id="app" class="container">
-        <div class="row">
-            <div class="col s12">
-                <h2 class="center-align">MENU</h2>
-            </div>
-            <div class="col s12 m6 l6">
-                <label>排序項目</label>
-                <select class="browser-default" v-model="orderType" @change="filterProducts(orderType)">
-                    <option value="all" selected>請選擇</option>
-                    <option value="price">價格</option>
-                    <option value="category">種類</option>
-                    <option value="hot">熱門程度</option>
-                </select>
-            </div>
-            <div class="col s12 m6 l6">
-                <label>搜尋商品</label>
-                <input placeholder="搜尋" type="text" class="validate" v-model="searchKey" @keyup.enter="searchProducts(searchKey)">
-            </div>
-        </div>
-        <div class="row">
-            <div v-for="product in showProducts" v-model="showProducts" class="col l4 m6 s12">
-                <product-card :product="product"></product-card>
-            </div>
+    <div id="app">
 
+        <!-- nav-bar -->
+        <nav>
+            <div class="nav-wrapper">
+                <a href="#" class="brand-logo">ShoppingCart</a>
+                <button href="#" class="right" id="btn-cart" @mouseenter="toggleShow()">
+                    <i class="large material-icons">shopping_cart</i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- cart -->
+        <div class="row" style="display:none" v-show="isShow" @mouseleave="toggleShow()">
+            <div class="col s12 m6 l4 right">
+                <ul class="collection">
+                    <li class="collection-item">
+                        <h5>已選購商品</h5>
+                    </li>
+                    <li class="collection-item avatar">
+                        <img src="https://source.unsplash.com/sHG1dCUXgPY/20X20" alt="" class="circle">
+                        <span class="title">季節鮮果沙拉盅</span>
+                        <p>沙拉
+                            <br> 110
+                        </p>
+                        <a href="#!" class="secondary-content">
+                            <i class="material-icons">delete</i>
+                        </a>
+                    </li>
+                    <li class="collection-item avatar">
+                        <img src="https://source.unsplash.com/sHG1dCUXgPY/20X20" alt="" class="circle">
+                        <span class="title">醬燒杏鮑菇</span>
+                        <p>前菜
+                            <br> 120
+                        </p>
+                        <a href="#!" class="secondary-content">
+                            <i class="material-icons">delete</i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
 
-    <!-- <products-list qqq="ggggggggg" :seen="seen" :products="products"></products-list>
-        <button v-on:click="showbutton">show</button> -->
-    </div>
+        <!-- menu -->
+        <div class="container">
+            <div class="row">
+                <div class="col s12">
+                    <h2 class="center-align">MENU</h2>
+                </div>
+                <div class="col s12 m6 l6">
+                    <label>排序項目</label>
+                    <select class="browser-default" v-model="orderType" @change="filterProducts(orderType)">
+                        <option value="all" selected>請選擇</option>
+                        <option value="price">價格</option>
+                        <option value="category">種類</option>
+                        <option value="hot">熱門程度</option>
+                    </select>
+                </div>
+                <div class="col s12 m6 l6">
+                    <label>搜尋商品</label>
+                    <input placeholder="搜尋" type="text" class="validate" v-model="searchKey" @keyup.enter="searchProducts(searchKey)">
+                </div>
+            </div>
+            <div class="row">
+                <div v-for="product in showProducts" v-model="showProducts" class="col l4 m6 s12">
+                    <product-card :product="product"></product-card>
+                </div>
 
-    <div id="example-2">
-        <simple-counter></simple-counter>
-        <simple-counter></simple-counter>
-        <simple-counter></simple-counter>
+            </div>
+        </div>
     </div>
 
     <script src="/assets/js/app.js"></script>

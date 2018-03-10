@@ -3,7 +3,6 @@ var app = new Vue({
     methods: {
         filterProducts(type) {
             this.showProducts = _.orderBy(this.products, [type], ['desc']);
-            // this.searchProducts(this.searchKey)
         },
         searchProducts(keyword) {
             this.showProducts = _.filter(this.products, function (product) {
@@ -13,11 +12,10 @@ var app = new Vue({
                 } else {
                     return false
                 }
-
-                // return (product.name.indexOf(keyword) !== -1 ||
-                //     product.category.indexOf(keyword) !== -1)
             });
-            // this.filterProducts(this.orderType)
+        },
+        toggleShow: function () {
+            this.isShow = !this.isShow
         }
     },
     created() {
@@ -27,6 +25,7 @@ var app = new Vue({
         $('select').material_select()
     },
     data: {
+        isShow: false,
         orderType: 'all',
         searchKey: '',
         showProducts: [],

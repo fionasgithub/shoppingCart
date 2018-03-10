@@ -1,0 +1,21 @@
+#btn-cart {
+    margin-right: 0.5rem;
+    border: 0px;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.collection {
+    position: fixed;
+    width: 400px;
+    right: 0px;
+    z-index: 1000;
+}
+
+@media only screen and (max-width: 400px) {
+    .collection {
+        position: fixed;
+        width: 100%;
+        right: 0px;
+        z-index: 1000;
+    }
+}
